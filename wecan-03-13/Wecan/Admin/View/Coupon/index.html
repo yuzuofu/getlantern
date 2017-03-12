@@ -1,0 +1,97 @@
+<extend name="Common/base" />
+<block name="title">
+    <title>微餐后台管理</title>
+</block>
+<block name="bread-crumb">
+    <!--  路径地图  -->
+    <ol class="breadcrumb">
+        <li>优惠券管理</li>
+    </ol>
+</block>
+<block name="main">
+    <div class="form-group" style="padding-left: 10px;">
+        <button class="btn btn-primary" onclick="add_coupon()">新增</button>
+    </div>
+
+    <table class="table table-striped">
+        <tr>
+            <th>#</th>
+            <th>优惠前缀</th>
+            <th>优惠额度</th>
+            <th>优惠开始时间</th>
+            <th>优惠结束时间</th>
+            <th>创建时间</th>
+            <th>优惠券数量</th>
+            <th>操作</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>TD</td>
+            <td>￥2</td>
+            <td>2017-03-06</td>
+            <td>2017-03-10</td>
+            <td>2017-03-06</td>
+            <td>50</td>
+            <td>
+                <a href="#list">优惠券列表</a>
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>TD</td>
+            <td>￥2</td>
+            <td>2017-03-06</td>
+            <td>2017-03-10</td>
+            <td>2017-03-06</td>
+            <td>50</td>
+            <td>
+                <a href="#list">优惠券列表</a>
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>TD</td>
+            <td>￥2</td>
+            <td>2017-03-06</td>
+            <td>2017-03-10</td>
+            <td>2017-03-06</td>
+            <td>50</td>
+            <td>
+                <a href="#list">优惠券列表</a>
+            </td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>TD</td>
+            <td>￥2</td>
+            <td>2017-03-06</td>
+            <td>2017-03-10</td>
+            <td>2017-03-06</td>
+            <td>50</td>
+            <td>
+                <a href="#list">优惠券列表</a>
+            </td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>TD</td>
+            <td>￥2</td>
+            <td>2017-03-06</td>
+            <td>2017-03-10</td>
+            <td>2017-03-06</td>
+            <td>50</td>
+            <td>
+                <a href="#list">优惠券列表</a>
+            </td>
+        </tr>
+    </table>
+</block>
+
+<block name="script">
+    <script>
+        function add_coupon(){
+            var url = "{:U('Coupon/add')}";
+            window.location.href = url;
+        }
+    </script>
+</block>

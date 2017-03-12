@@ -1,0 +1,11 @@
+body{
+    padding-top: 70px;
+}
+
+.menu-control, .desk-control{
+    padding:0 15px;
+}
+
+.menu-submit-btn, .desk-submit-btn{
+    padding:0 30px;
+}
