@@ -29,6 +29,7 @@
                 <td>{$desk.intro}</td>
                 <td>
                     <a href="{:U('Desk/edit', array('id'=>$desk['id']))}">编辑</a>
+                    <if condition="$desk['lock'] EQ 1"><a href="{:U('Desk/unlock', array('id' => $desk['id']))}">解除锁定</a></if>
                     <a data-toggle="modal" data-target="#myModal" href="{:U('Desk/delete', array('id' => $desk['id']))}">删除</a>
                 </td>
             </tr>

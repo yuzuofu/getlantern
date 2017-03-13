@@ -1,0 +1,29 @@
+<extend name="Common/base" />
+<block name="title">
+    <title>微餐后台管理</title>
+</block>
+<block name="bread-crumb">
+    <!--  路径地图  -->
+    <ol class="breadcrumb">
+        <li>优惠券管理</li>
+        <li>优惠券列表</li>
+    </ol>
+</block>
+<block name="main">
+    <table class="table table-striped">
+        <tr>
+            <th>#</th>
+            <th>优惠券号码</th>
+            <th>创建时间</th>
+            <th>是否可用</th>
+        </tr>
+        <volist name="tickets" id="ticket">
+            <tr>
+                <td>{$ticket.id}</td>
+                <td>{$ticket.number}</td>
+                <td>{:date('Y-m-d', $ticket['create_time'])}</td>
+                <td><if condition="$ticket['enable'] EQ 1">已用<else/>未用</if></td>
+            </tr>
+        </volist>
+    </table>
+</block>

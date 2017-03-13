@@ -7,6 +7,10 @@ class CouponController extends PublicController
 {
     public function index()
     {
+        $couponTable = D('Coupon');
+
+        $coupon_list = $couponTable->select();
+        $this->assign('coupon_list', $coupon_list);
         $this->display('index');
     }
 
@@ -15,6 +19,7 @@ class CouponController extends PublicController
         if (IS_POST) {
             $data = I('post.');
             $couponTable = D('Coupon');
+            $data['coupon_prefix'] =strtoupper($data['coupon_prefix']);
 
             if ($couponTable->create($data)) {
                 $insertID = $couponTable->add();
@@ -22,12 +27,12 @@ class CouponController extends PublicController
                 if ($insertID) {
                     $count = $data['coupon_acount'];
                     $couponTicketTable = M('CouponTicket');
-                    $perfix = strtoupper($perfix);
                     $p = 1;
+                    $prefix = $data['coupon_prefix'];
                     $numbers = [];
 
                     while ($p <= $count) {
-                        $number = $perfix . mt_rand(100000, 999999);
+                        $number = $prefix . mt_rand(100000, 999999);
                         if (!in_array($number, $numbers)) {
                             $numbers[] = $number;
                             $p++;
@@ -55,7 +60,23 @@ class CouponController extends PublicController
             } else {
                 $this->error($couponTable->getError(), U('Coupon/index'));
             }
+        } elseif (IS_GET) {
+            $this->display('add-coupon');
         }
-        $this->display('add-coupon');
+    }
+
+    public function tickets()
+    {
+        $cid = I('get.cid/d');
+        $couponTicketTable = D('CouponTicket');
+
+        if ($cid) {
+            $tickets = $couponTicketTable->where(array('cid' => $cid))->select();
+            $this->assign('tickets', $tickets);
+            $this->display('coupon-list');
+        } else {
+            $this->recirect('index');
+        }
+
     }
 }

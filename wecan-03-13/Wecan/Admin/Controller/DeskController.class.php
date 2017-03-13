@@ -69,6 +69,19 @@ class DeskController extends PublicController
         }
     }
 
+    public function unlock()
+    {
+        $id = I('get.id');
+        $deskTable = D('Desk');
+        $res = $deskTable->where(array('id' => $id))->setField('lock', 0);
+
+        if ($res) {
+            $this->success('解锁成功', U('Desk/index'));
+        } else {
+            $this->error($deskTable->getDbError(), U('Desk/index'));
+        }
+    }
+
     public function delete()
     {
         if (IS_GET) {

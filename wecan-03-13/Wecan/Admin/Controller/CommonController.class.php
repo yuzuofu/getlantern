@@ -11,6 +11,27 @@ class CommonController extends Controller
         echo 123;
     }
 
+    public function intro()
+    {
+        if (IS_POST) {
+            $new_intro = I('post.intro');
+            $filename = APP_PATH . 'Admin/Conf/config.php';
+            $config = include $filename;
+
+            $config['_INTRO_'] = $new_intro;
+            $filecontent = "<?php\r\nreturn " . var_export($config, true) . ";";
+            if (file_exists($filename)) {
+                file_put_contents($filename, $filecontent);
+            }
+            redirect(U('Common/intro'));
+        } else {
+            $config = include APP_PATH . 'Admin/Conf/config.php';
+            $intro = $config['_INTRO_'];
+            $this->assign('intro', $intro);
+            $this->display('intro');
+        }
+    }
+
     public function login()
     {
         if (IS_POST) {

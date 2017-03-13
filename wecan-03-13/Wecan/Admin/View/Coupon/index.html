@@ -24,66 +24,20 @@
             <th>优惠券数量</th>
             <th>操作</th>
         </tr>
-        <tr>
-            <td>1</td>
-            <td>TD</td>
-            <td>￥2</td>
-            <td>2017-03-06</td>
-            <td>2017-03-10</td>
-            <td>2017-03-06</td>
-            <td>50</td>
-            <td>
-                <a href="#list">优惠券列表</a>
-            </td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>TD</td>
-            <td>￥2</td>
-            <td>2017-03-06</td>
-            <td>2017-03-10</td>
-            <td>2017-03-06</td>
-            <td>50</td>
-            <td>
-                <a href="#list">优惠券列表</a>
-            </td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>TD</td>
-            <td>￥2</td>
-            <td>2017-03-06</td>
-            <td>2017-03-10</td>
-            <td>2017-03-06</td>
-            <td>50</td>
-            <td>
-                <a href="#list">优惠券列表</a>
-            </td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>TD</td>
-            <td>￥2</td>
-            <td>2017-03-06</td>
-            <td>2017-03-10</td>
-            <td>2017-03-06</td>
-            <td>50</td>
-            <td>
-                <a href="#list">优惠券列表</a>
-            </td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>TD</td>
-            <td>￥2</td>
-            <td>2017-03-06</td>
-            <td>2017-03-10</td>
-            <td>2017-03-06</td>
-            <td>50</td>
-            <td>
-                <a href="#list">优惠券列表</a>
-            </td>
-        </tr>
+        <volist name="coupon_list" id="coupon">
+            <tr>
+                <td>{$coupon.id}</td>
+                <td>{$coupon.prefix}</td>
+                <td>￥{$coupon.amount}</td>
+                <td>{:date('Y-m-d H:i:s', $coupon['start_time'])}</td>
+                <td>{:date('Y-m-d H:i:s', $coupon['end_time'])}</td>
+                <td>{:date('Y-m-d', $coupon['create_time'])}</td>
+                <td>{$coupon.acount}</td>
+                <td>
+                    <a href="{:U('Coupon/tickets', array('cid' => $coupon['id']))}">优惠券列表</a>
+                </td>
+            </tr>
+        </volist>
     </table>
 </block>
 

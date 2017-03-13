@@ -51,11 +51,11 @@
         </nav>
     
     
-    <form action="#">
+    <form action="" method="post">
         <div class="form-group row desk-control">
             <div class="col-md-4">
                 <label for="coupon-perfix" class="h4">优惠券前缀</label>
-                <input type="text" class="form-control" id="coupon-perfix" name="coupon_perfix" />
+                <input type="text" class="form-control" id="coupon-perfix" name="coupon_prefix" />
             </div>
         </div>
         <div class="form-group row desk-control">
@@ -79,7 +79,7 @@
         <div class="form-group row desk-control">
             <div class="col-md-4">
                 <label for="coupon-count" class="h4">优惠券数量</label>
-                <input type="number" class="form-control" id="coupon-count" name="coupon_count" />
+                <input type="number" class="form-control" id="coupon-count" name="coupon_acount" />
             </div>
         </div>
         <div class="form-group row desk-submit-btn">
