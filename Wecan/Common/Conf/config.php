@@ -4,8 +4,8 @@ return array(
     'DB_TYPE' => 'mysqli',
     'DB_HOST' => 'localhost',
     'DB_NAME' => 'wecan',
-    'DB_USER' => 'root',
-    'DB_PWD' => 'smartonlineA01',
+    'DB_USER' => 'wecan',
+    'DB_PWD' => 'wecan_301',
     'DB_PORT' => 3306,
     'DB_CHARSET'=> 'utf8',
 
