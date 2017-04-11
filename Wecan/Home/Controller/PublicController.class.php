@@ -16,8 +16,11 @@ class PublicController extends Controller
         $app = new Application($config);
         $oauth = $app->oauth;
 
+        if (empty(session("customer_openid"))) {
+            return $oauth->redirect();
+        }
+
         $openid = session("customer_openid");
-//        var_dump($openid);
         if (!$openid) {
             echo "<h1 style='color: red;'>请从相关的微信公众平台进入</h1>";exit();
         }
