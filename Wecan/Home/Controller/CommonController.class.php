@@ -27,4 +27,35 @@ class CommonController extends Controller
         $response = $server->serve();
         $response->send();
     }
+
+    public function createMenu()
+    {
+        $options = [
+            'debug' => true,
+            'app_id' => 'wx52ecb561d8160e1e',
+            'secret' => 'c031dbb61d244867ab4b998e8da188d3',
+            'token' => 'wecan',
+
+            'log' => [
+                'level' => 'debug',
+                'file' => '/tmp/easywechat.log'
+            ]
+        ];
+        $app = new Application($options);
+        $menu = $app->menu;
+        $menu->destroy();
+        $buttons = [
+            [
+                'type' => 'view',
+                'name' => '开始预约',
+                'url' => 'http://120.24.49.247?s=/Home/Index/index'
+            ],
+            [
+                'type' => 'view',
+                'name' => '获取优惠券',
+                'url' => 'http://120.24.49.247?s=/Home/Public/getTicket'
+            ]
+        ];
+        $menu->add($buttons);
+    }
 }
