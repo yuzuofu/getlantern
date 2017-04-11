@@ -1,0 +1,8 @@
+[ 2017-04-07T23:55:19+08:00 ] 192.168.56.1 /index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000034s ]
+INFO: [ app_init ] --END-- [ RunTime:0.050046s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.035337s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.035431s ]
+

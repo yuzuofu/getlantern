@@ -1,0 +1,18 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="myModalLabel">选择数量</h4>
+</div>
+<div class="modal-body">
+    <div class="container-fluid">
+        <div class="row form-group">
+            <label class="col-sm-6 col-md-6 control-label">请输入数量:</label>
+            <div class="col-sm-6 col-md-6">
+                <input type="text" class="form-control" id="menu-count" />
+                <input type="hidden" id="menu-id" value="{$menu_id}">
+            </div>
+        </div>
+        <div class="row text-center">
+            <button class="btn btn-primary" onclick="confirm_count()">确定</button>
+        </div>
+    </div>
+</div>

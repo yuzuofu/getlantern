@@ -1,0 +1,35 @@
+<extend name="Common/base" />
+<block name="main">
+    <div class="container-fluid">
+        <div class="row with-padding-lg" style="margin: 0 5px;" id="img-container">
+            <volist name="menu_list" id="menu">
+                <div class="col-xs-6 col-sm-6 imgbox">
+                    <a href="{$menu.pic}" data-lightbox="image-{$menu.id}" title="pic{$menu.id}"><img src="{$menu.pic}" alt=""></a>
+                </div>
+            </volist>
+        </div>
+    </div>
+</block>
+<block name="navbar-bottom">
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-xs-6 text-center">
+                    <a href="{:U('Order/orderDesk')}" class="button button-block button-pill button-primary">我要预约</a>
+                </div>
+                <div class="col-sm-6 col-xs-6 text-center">
+                    <span class="button-dropdown button-dropdown-plain" data-buttons="dropdown">
+                        <button class="button button-block button-caution button-pill">
+                            个人中心 <i class="fa fa-caret-up"></i>
+                        </button>
+
+                        <ul class="button-dropdown-list is-above">
+                            <li><a href="{:U('Customer/index')}">我的预约</a></li>
+                            <li><a href="{:U('Customer/coupon')}">我的优惠券</a></li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </nav>
+</block>

@@ -1,0 +1,17 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="myModalLabel">删除预约</h4>
+</div>
+<div class="modal-body">
+    <div class="container-fluid">
+        <form action="{:U('Order/cancelOrder')}" method="post">
+            <div class="row form-group">
+                <label class="col-sm-6 col-md-6 control-label">确定要删除该预约吗？</label>
+            </div>
+            <input type="hidden" name="oid" value="{$orderid}" />
+            <div class="row text-center">
+                <button class="btn btn-primary" onclick="confirm_count()">确定</button>
+            </div>
+        </form>
+    </div>
+</div>

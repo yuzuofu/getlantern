@@ -1,0 +1,51 @@
+<extend name="Common/base" />
+<block name="main">
+    <div class="container-fluid">
+        <form action="{:U('Order/orderInfo')}" method="post" id="form-order-info">
+            <div class="form-group">
+                <label for="user-wechat" class="h4">微信昵称:</label>
+                <input type="text" class="form-control" name="user_wechat" disabled id="user-wechat" value="坏名字" />
+            </div>
+            <div class="form-group">
+                <label class="h4" for="user-name">预约人:</label>
+                <input type="text" class="form-control" id="user-name" name="username" />
+            </div>
+            <div class="form-group">
+                <label for="person-num" class="h4">用餐人数</label>
+                <input type="text" class="form-control" id="person-num" name="num" />
+            </div>
+            <div class="form-group">
+                <label for="use-time" class="h4">用餐时间</label>
+                <input type="text" class="form-control" id="use-time" name="use_time" />
+            </div>
+            <div class="form-group">
+                <label for="user-phone" class="h4">联系电话</label>
+                <input type="text" class="form-control" id="user-phone" name="phone" />
+            </div>
+        </form>
+    </div>
+</block>
+<block name="navbar-bottom">
+    <nav class="navbar navbar-default navbar-fixed-bottom" style="z-index: -1000;">
+        <div class="container">
+            <div class="row with-padding">
+                <button onclick="submit_order()" type="button" class="btn btn-primary btn-block">完成</button>
+            </div>
+        </div>
+    </nav>
+</block>
+<block name="script">
+    <script>
+        $("#use-time").datetimepicker({
+            format:'yyyy-mm-dd hh:ii:ss',
+            autoclose:true,
+            todayBtn:true,
+            todayHighlight:true
+        });
+
+        function submit_order()
+        {
+            $("#form-order-info").submit();
+        }
+    </script>
+</block>

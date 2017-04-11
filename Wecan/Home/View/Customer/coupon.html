@@ -1,0 +1,19 @@
+<extend name="Common/base" />
+<block name="main">
+    <div class="container-fluid">
+        <volist name="coupon_list" id="coupon">
+            <div class="row coupon-box">
+                <span class="col-xs-12 col-sm-12 text-center coupon-text" style="color: #cc0000;">{$coupon.number}</span>
+            </div>
+        </volist>
+    </div>
+</block>
+<block name="navbar-bottom">
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="row with-padding">
+                <a href = "{:U('Index/index')}" class="btn btn-primary btn-block">首页</a>
+            </div>
+        </div>
+    </nav>
+</block>

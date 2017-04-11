@@ -1,0 +1,66 @@
+<extend name="Common/base" />
+<block name="main">
+    <!--  预约数据列表  -->
+    <table class="table table-striped">
+        <tr>
+            <th>#</th>
+            <th>预约用户</th>
+            <th>预约餐桌</th>
+            <th>预约时间</th>
+            <th>用餐人数</th>
+            <th>用餐时间</th>
+            <th>联系电话</th>
+            <th>总价</th>
+            <th>最终价格</th>
+            <th>操作</th>
+        </tr>
+        <volist name="order_list" id="order">
+            <tr>
+                <td>{$order.id}</td>
+                <td>{$order.username}</td>
+                <td>{$order.dkname}</td>
+                <td>{:date('Y-m-d H:i:s', $order['create_time'])}</td>
+                <td>{$order.person}人</td>
+                <td>{:date('Y-m-d', $order['use_time'])}</td>
+                <td>{$order.phone}</td>
+                <td>{$order.total_price}</td>
+                <td>{$order.final_price}</td>
+                <td>
+                    <a href="{:U('Order/menuList', array('id' => $order['id']))}">预约菜单</a>
+                    <a href="{:U('Order/edit', array('id' => $order['id']))}">编辑</a>
+                    <a data-target="#myModal" data-toggle="modal" href="{:U('Order/delete', array('id' => $order['id']))}">删除</a>
+                </td>
+            </tr>
+        </volist>
+    </table>
+    <div class="row text-center">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</block>
+<block name="modal">
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+</block>

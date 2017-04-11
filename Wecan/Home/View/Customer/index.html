@@ -1,0 +1,43 @@
+<extend name="Common/base" />
+<block name="main">
+    <div class="container-fluid">
+        <volist name="my_orders" id="my_order">
+            <div class="row with-padding order-box">
+                <div class="col-xs-8 col-sm-8">
+                    <div class="row with-padding">
+                        <label class="h5 col-xs-5 col-sm-5">预约时间:</label>
+                        <span class="h5 pull-left col-xs-7 col-sm-7"><small>{:date('Y-m-d H:i:s', $my_order['create_time'])}</small></span>
+                    </div>
+                    <div class="row with-padding">
+                        <label class="h5 col-xs-5 col-sm-5">桌&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</label>
+                        <span class="h5 pull-left col-xs-7 col-sm-7"><small>{$my_order.dkname}</small></span>
+                    </div>
+                </div>
+                <div class="col-xs-2 col-xs-2 box-gps">
+                    <button class="btn-gps">导航</button>
+                </div>
+                <div class="col-xs-2 col-sm-2 box-cancel">
+                    <a href="{:U('Order/cancelOrder', array('id' => $my_order['id']))}" data-target="#myModal" data-toggle="modal" class="btn-cancel">取消</a>
+                </div>
+            </div>
+        </volist>
+    </div>
+</block>
+<block name="navbar-bottom">
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="row with-padding">
+                <a href = "{:U('Index/index')}" class="btn btn-primary btn-block">首页</a>
+            </div>
+        </div>
+    </nav>
+</block>
+<block name="modal">
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+</block>

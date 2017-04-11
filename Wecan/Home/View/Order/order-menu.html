@@ -1,0 +1,66 @@
+<extend name="Common/base" />
+<block name="main">
+    <div class="container-fluid">
+        <volist name="menu_list" id="menu">
+            <div class="row menu-box">
+                <div class="col-xs-4 col-sm-4 menu-img">
+                    <a href="{$menu.pic}" data-lightbox="image-1" title="pic1"><img src="{$menu.pic}" alt=""></a>
+                </div>
+                <div class="col-xs-8 col-sm-8">
+                    <div class="row">
+                        <span class="col-xs-6 col-sm-6 text-right menu-title">{$menu.name}</span>
+                        <span class="col-xs-6 col-sm-6 text-left menu-price"><i>￥{$menu.price}</i></span>
+                    </div>
+                    <div class="row menu-add-btn">
+                        <a href="{:U('Order/menuDetail', array('mid' => $menu['id']))}" data-target="#menuModal" data-toggle="modal" class="btn btn-block btn-primary">添加到菜单</a>
+                    </div>
+                </div>
+            </div>
+        </volist>
+</block>
+<block name="navbar-bottom">
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <form action="{:U('Order/orderMenu')}" method="post" id="form-menu-list">
+                <div class="row with-padding">
+                    <button onclick="add_menu()" class="btn btn-primary btn-block">下一步</button>
+                </div>
+            </form>
+        </div>
+    </nav>
+</block>
+<block name="modal">
+    <!-- Modal -->
+    <div class="modal fade" id="menuModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script>
+        var menu_list = [];
+        $("#menuModal").on('hidden.bs.modal', function(){
+            $(this).removeData("bs.modal");
+        });
+
+        function confirm_count()
+        {
+            var menu_id = $("#menu-id").val();
+            menu_list[menu_id] = $("#menu-count").val();
+            $("#menuModal").modal('hide');
+        }
+
+        function add_menu()
+        {
+            var btn_div = $("#form-menu-list").children("div");
+            for (var i = 0; i < menu_list.length; i++){
+                if (menu_list[i]) {
+                    var menu_html = "<input type='hidden' name='menu[" + i + "]' value='" + menu_list[i] + "' />";
+                    btn_div.before(menu_html);
+                }
+            }
+        }
+    </script>
+</block>
