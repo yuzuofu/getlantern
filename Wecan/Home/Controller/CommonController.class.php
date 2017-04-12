@@ -67,7 +67,6 @@ class CommonController extends Controller
         $app = new Application($config);
         $oauth = $app->oauth;
         $user = $oauth->user();
-        var_dump($user->toArray());exit();
         //  TODO:将用户信息存储进数据库
 //        $customerTable = D('Customer');
         $openid = $user->getId();
