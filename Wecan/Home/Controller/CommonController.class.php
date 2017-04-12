@@ -100,6 +100,7 @@ class CommonController extends Controller
                     'update_time' => time()
                 ];
                 $user_couponTable->add($data);
+                $coupon_ticketTable->where(['id' => $cpid])->setField('enable', 2);
             }
 
         }
