@@ -70,7 +70,7 @@ class CommonController extends Controller
         //  TODO:将用户信息存储进数据库
         //  TODO:给用户发送优惠券
         session('customer_openid', $user->id);
-        header('location:' . "http://120.24.49.247/index.php/?s=/Home/Index/index");
+        header('location:' . "http://120.24.49.247/?s=/Home/Index/index");
     }
 
     public function createMenu()
