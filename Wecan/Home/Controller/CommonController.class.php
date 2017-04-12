@@ -68,45 +68,45 @@ class CommonController extends Controller
         $oauth = $app->oauth;
         $user = $oauth->user();
         //  TODO:将用户信息存储进数据库
-//        $customerTable = D('Customer');
+        $customerTable = D('Customer');
         $openid = $user->getId();
-//        $customerid = $customerTable->where(['openid' => $openid])->getField('id');
-//        if (!$customerid) {
-//            if ($customerTable->create($user->toArray())) {
-//                $customerTable->add();
-//                $customerid = $customerTable->getLastInsID();
-//            } else {
-//                echo 123;exit();
-////                $this->error("服务器出现错误");
-//            }
-//        }
+        $customerid = $customerTable->where(['openid' => $openid])->getField('id');
+        if (!$customerid) {
+            if ($customerTable->create($user->toArray())) {
+                $customerTable->add();
+                $customerid = $customerTable->getLastInsID();
+            } else {
+                echo 123;exit();
+//                $this->error("服务器出现错误");
+            }
+        }
 //
 //        //  TODO:给用户发送优惠券
-//        $user_couponTable = M('user_coupon');
-//        $user_coupon = $user_couponTable->where(['uid' => $customerid])->find();
-//        if (!$user_coupon) {  //  用户没有优惠券
-//            $coupon_ticketTable = M('coupon_ticket');
-//            $enable_tickets = $coupon_ticketTable
-//                            ->where(['enable' => 0])
-//                            ->order("create_time DESC")
-//                            ->getField('id');
-//            echo 456;
-//            if ($enable_tickets) {
-//                //  系统有可使用的优惠券剩余，则给该用户发放一张优惠券
-//                //  反之则不发放
-//                $cpid = $enable_tickets;
-//                $data = [
-//                    'uid' => $customerid,
-//                    'cpid' => $cpid,
-//                    'create_time' => time(),
-//                    'update_time' => time()
-//                ];
-//                $user_couponTable->add($data);
-//                echo 789;
-//                $coupon_ticketTable->where(['id' => $cpid])->setField('enable', 2);
-//            }
-//
-//        }
+        $user_couponTable = M('user_coupon');
+        $user_coupon = $user_couponTable->where(['uid' => $customerid])->find();
+        if (!$user_coupon) {  //  用户没有优惠券
+            $coupon_ticketTable = M('coupon_ticket');
+            $enable_tickets = $coupon_ticketTable
+                            ->where(['enable' => 0])
+                            ->order("create_time DESC")
+                            ->getField('id');
+            echo 456;
+            if ($enable_tickets) {
+                //  系统有可使用的优惠券剩余，则给该用户发放一张优惠券
+                //  反之则不发放
+                $cpid = $enable_tickets;
+                $data = [
+                    'uid' => $customerid,
+                    'cpid' => $cpid,
+                    'create_time' => time(),
+                    'update_time' => time()
+                ];
+                $user_couponTable->add($data);
+                echo 789;
+                $coupon_ticketTable->where(['id' => $cpid])->setField('enable', 2);
+            }
+
+        }
 
         session('customer_openid', $openid);
         header('location:' . "http://120.24.49.247/?s=/Home/Index/index");
