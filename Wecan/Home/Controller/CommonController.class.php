@@ -76,7 +76,8 @@ class CommonController extends Controller
                 $customerTable->add();
                 $customerid = $customerTable->getLastInsID();
             } else {
-                $this->error("服务器出现错误");
+                var_dump($customerTable->getError());exit();
+//                $this->error("服务器出现错误");
             }
         }
 
