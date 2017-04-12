@@ -36,7 +36,7 @@ class CommonController extends Controller
             'secret' => 'c031dbb61d244867ab4b998e8da188d3',
             'token' => 'wecan',
             'oauth' => [
-                'scopes' => ['snsapi_userinfo'],
+                'scopes' => ['snsapi_base'],
                 'callback' => U('oauthWechat'),
             ],
             'log' => [
