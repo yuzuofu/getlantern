@@ -11,6 +11,10 @@ class PublicController extends Controller
             'oauth' => [
                 'scopes' => ['snaapi_userinfo'],
                 'callback' => U('oauthWechat'),
+            ],
+            'log' => [
+                'level' => 'debug',
+                'file'  => '/tmp/easywechat.log'
             ]
         ];
         $app = new Application($config);
@@ -32,7 +36,6 @@ class PublicController extends Controller
         $app = new Application($config);
         $oauth = $app->oauth;
         $user = $oauth->user()->toArray();
-        var_dump($user);exit();
         //  TODO:将用户信息存储进数据库
         //  TODO:给用户发送优惠券
         session('customer_openid', $user->id);
