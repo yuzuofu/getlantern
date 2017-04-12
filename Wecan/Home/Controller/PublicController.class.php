@@ -21,8 +21,7 @@ class PublicController extends Controller
         $oauth = $app->oauth;
 
         if (empty(session("customer_openid"))) {
-            var_dump(session("customer_openid"));
-            return $oauth->redirect();
+            $oauth->redirect()->send();
         }
 
         $openid = session("customer_openid");
