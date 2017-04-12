@@ -44,7 +44,6 @@ class CommonController extends Controller
                 'file'  => '/tmp/easywechat.log'
             ]
         ];
-        var_dump($config);exit();
         $app = new Application($config);
         $oauth = $app->oauth;
 
@@ -68,6 +67,7 @@ class CommonController extends Controller
         $app = new Application($config);
         $oauth = $app->oauth;
         $user = $oauth->user();
+        var_dump($user);exit();
         //  TODO:将用户信息存储进数据库
         $customerTable = D('Customer');
         $openid = $user->getId();
