@@ -9,7 +9,7 @@ class PublicController extends Controller
     {
         $config = [
             'oauth' => [
-                'scopes' => ['snaapi_userinfo'],
+                'scopes' => ['snsapi_userinfo'],
                 'callback' => U('oauthWechat'),
             ],
             'log' => [
@@ -21,6 +21,7 @@ class PublicController extends Controller
         $oauth = $app->oauth;
 
         if (empty(session("customer_openid"))) {
+            var_dump(session("customer_openid"));
             return $oauth->redirect();
         }
 
