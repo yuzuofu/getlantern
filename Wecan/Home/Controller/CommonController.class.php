@@ -44,6 +44,7 @@ class CommonController extends Controller
                 'file'  => '/tmp/easywechat.log'
             ]
         ];
+        var_dump($config);exit();
         $app = new Application($config);
         $oauth = $app->oauth;
 
