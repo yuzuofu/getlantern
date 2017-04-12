@@ -76,7 +76,7 @@ class CommonController extends Controller
                 $customerTable->add();
                 $customerid = $customerTable->getLastInsID();
             } else {
-                var_dump($customerTable->getError());exit();
+                echo 123;exit();
 //                $this->error("服务器出现错误");
             }
         }
@@ -90,6 +90,7 @@ class CommonController extends Controller
                             ->where(['enable' => 0])
                             ->order("create_time DESC")
                             ->getField('id');
+            echo 456;
             if ($enable_tickets) {
                 //  系统有可使用的优惠券剩余，则给该用户发放一张优惠券
                 //  反之则不发放
@@ -101,6 +102,7 @@ class CommonController extends Controller
                     'update_time' => time()
                 ];
                 $user_couponTable->add($data);
+                echo 789;
                 $coupon_ticketTable->where(['id' => $cpid])->setField('enable', 2);
             }
 
