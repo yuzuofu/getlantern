@@ -8,6 +8,10 @@ class PublicController extends Controller
     public function _initialize()
     {
         $config = [
+            'debug' => true,
+            'app_id' => 'wx52ecb561d8160e1e',
+            'secret' => 'c031dbb61d244867ab4b998e8da188d3',
+            'token' => 'wecan',
             'oauth' => [
                 'scopes' => ['snsapi_userinfo'],
                 'callback' => U('oauthWechat'),
