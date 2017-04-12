@@ -28,6 +28,42 @@ class CommonController extends Controller
         $response->send();
     }
 
+    public function platformEnter()
+    {
+        $config = [
+            'debug' => true,
+            'app_id' => 'wx52ecb561d8160e1e',
+            'secret' => 'c031dbb61d244867ab4b998e8da188d3',
+            'token' => 'wecan',
+            'oauth' => [
+                'scopes' => ['snsapi_userinfo'],
+                'callback' => U('oauthWechat'),
+            ],
+            'log' => [
+                'level' => 'debug',
+                'file'  => '/tmp/easywechat.log'
+            ]
+        ];
+        $app = new Application($config);
+        $oauth = $app->oauth;
+
+        if (empty(session("customer_openid"))) {
+            $oauth->redirect()->send();
+        }
+    }
+
+    public function oauthWechat()
+    {
+        $config = [];
+        $app = new Application($config);
+        $oauth = $app->oauth;
+        $user = $oauth->user()->toArray();
+        //  TODO:将用户信息存储进数据库
+        //  TODO:给用户发送优惠券
+        session('customer_openid', $user->id);
+        $this->redirect(U('Index/index'));
+    }
+
     public function createMenu()
     {
         $options = [
@@ -48,12 +84,12 @@ class CommonController extends Controller
             [
                 'type' => 'view',
                 'name' => '开始预约',
-                'url' => 'http://120.24.49.247?s=/Home/Index/index'
+                'url' => 'http://120.24.49.247/?s=/Home/Common/platformEnter'
             ],
             [
                 'type' => 'view',
                 'name' => '获取优惠券',
-                'url' => 'http://120.24.49.247?s=/Home/Public/getTicket'
+                'url' => 'http://120.24.49.247?s=/Home/Common/getTicket'
             ]
         ];
         $menu->add($buttons);
