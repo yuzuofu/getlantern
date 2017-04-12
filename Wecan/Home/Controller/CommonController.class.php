@@ -36,7 +36,7 @@ class CommonController extends Controller
             'secret' => 'c031dbb61d244867ab4b998e8da188d3',
             'token' => 'wecan',
             'oauth' => [
-                'scopes' => ['snsapi_base'],
+                'scopes' => ['snsapi_userinfo'],
                 'callback' => U('oauthWechat'),
             ],
             'log' => [
@@ -45,7 +45,7 @@ class CommonController extends Controller
             ]
         ];
         $app = new Application($config);
-        $oauth = $app->oauth;
+        $oauth = $app->oauth->scopes(['snsapi_userinfo']);
 
         if (empty(session("customer_openid"))) {
             $oauth->redirect()->send();
