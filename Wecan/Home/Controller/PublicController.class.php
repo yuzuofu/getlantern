@@ -15,7 +15,7 @@ class PublicController extends Controller
         ];
         $app = new Application($config);
         $oauth = $app->oauth;
-
+        var_dump(session('customer_openid'));exit();
         if (empty(session("customer_openid"))) {
             return $oauth->redirect();
         }
