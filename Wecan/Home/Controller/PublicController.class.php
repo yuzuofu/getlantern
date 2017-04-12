@@ -1,7 +1,6 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
-use EasyWeChat\Foundation\Application;
 
 class PublicController extends Controller
 {
