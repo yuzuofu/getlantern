@@ -54,7 +54,16 @@ class CommonController extends Controller
 
     public function oauthWechat()
     {
-        $config = [];
+        $config = [
+            'debug' => true,
+            'app_id' => 'wx52ecb561d8160e1e',
+            'secret' => 'c031dbb61d244867ab4b998e8da188d3',
+            'token' => 'wecan',
+            'log' => [
+                'level' => 'debug',
+                'file'  => '/tmp/easywechat.log'
+            ]
+        ];
         $app = new Application($config);
         $oauth = $app->oauth;
         $user = $oauth->user()->toArray();
