@@ -30,7 +30,7 @@
             map.addControl(top_right_navigation);
             var walking = new BMap.WalkingRoute(map, {renderOptions:{map: map, autoViewport: true}});
             walking.search(new BMap.Point(r.point.lng, r.point.lat), new BMap.Point(120.7027610000, 27.9241300000));
-//            alert('您的位置：'+r.point.lng+','+r.point.lat);
+            alert('您的位置：'+r.point.lng+','+r.point.lat);
         }
         else {
             alert('failed'+this.getStatus());
