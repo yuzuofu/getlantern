@@ -23,6 +23,7 @@ class CommonController extends Controller
         $server = $app->server;
         $server->setMessageHandler(function ($message) {
             $msg_type = $message->MsgType;
+            return $msg_type;
 //            if ($msg_type == 'location') {//  存储用户地理位置
 //                $user_locationTable = M('user_location');
 //                $user_location = $user_locationTable
