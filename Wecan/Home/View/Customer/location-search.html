@@ -15,7 +15,7 @@
 <script type="text/javascript">
     // 百度地图API功能
     var map = new BMap.Map("allmap");
-    map.centerAndZoom(new BMap(27.933, 120.717), 11);
+    map.centerAndZoom(new BMap.Point(27.933, 120.717), 11);
     var walking = new BMap.WalkingRoute(map, {renderOptions:{map: map, autoViewport: true}});
-    walking.search(new BMap(27.933, 120.717), new BMap(27.925, 120.717));
+    walking.search(new BMap.Point(27.933, 120.717), new BMap.Point(27.925, 120.717));
 </script>
