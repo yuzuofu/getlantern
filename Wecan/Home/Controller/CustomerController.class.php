@@ -35,4 +35,9 @@ class CustomerController extends PublicController
         $this->assign("coupon_list", $coupon_list);
         $this->display();
     }
+
+    public function locationSearch()
+    {
+        $this->display("location-search");
+    }
 }
