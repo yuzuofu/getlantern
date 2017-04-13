@@ -47,7 +47,7 @@ class CommonController extends Controller
                     ];
                     $user_locationTable->save($data);
                 }
-                return "";
+                return "地理为宗旨更新成功";
             } else {
                 return "您好！欢迎关注我！";
             }
