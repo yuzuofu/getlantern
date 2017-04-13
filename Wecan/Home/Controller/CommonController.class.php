@@ -22,7 +22,21 @@ class CommonController extends Controller
         $app = new Application($options);
         $server = $app->server;
         $server->setMessageHandler(function ($message) {
-            return "您好！欢迎关注我！";
+            $msg_type = $message->MsgType;
+            if ($$msg_type == 'location') {//  存储用户地理位置
+                $user_locationTable = M('user_location');
+                $data = [
+                    'openid' => $message->FromUserName,
+                    'latitude' => $message->Location_X,
+                    'longitude' => $message->Location_Y,
+                    'create_time' => time(),
+                    'update_time' => time()
+                ];
+                $user_locationTable->add($data);
+                return "";
+            } else {
+                return "您好！欢迎关注我！";
+            }
         });
         $response = $server->serve();
         $response->send();
