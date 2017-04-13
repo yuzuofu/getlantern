@@ -22,36 +22,37 @@ class CommonController extends Controller
         $app = new Application($options);
         $server = $app->server;
         $server->setMessageHandler(function ($message) {
-            $msg_type = $message->MsgType;
-            $event_type = $message->Event;
-            if ($msg_type == 'event' && $event_type == 'location') {//  存储用户地理位置
-                $user_locationTable = M('user_location');
-                $user_location = $user_locationTable
-                                ->where(['openid' => $message->FromUserName])
-                                ->getField('id');
-
-                if (!$user_location) {
-                    $data = [
-                        'openid' => $message->FromUserName,
-                        'latitude' => $message->Location_X,
-                        'longitude' => $message->Location_Y,
-                        'create_time' => time(),
-                        'update_time' => time()
-                    ];
-                    $user_locationTable->add($data);
-                } else {
-                    $data = [
-                        'id' => $user_location,
-                        'latitude' => $message->Location_X,
-                        'longitude' => $message->Location_Y,
-                        'update_time' => time()
-                    ];
-                    $user_locationTable->save($data);
-                }
-                return "地理位置更新成功";
-            } else {
-                return "您好！欢迎关注我！";
-            }
+//            $msg_type = $message->MsgType;
+//            $event_type = $message->Event;
+//            if ($msg_type == 'event' && $event_type == 'location') {//  存储用户地理位置
+//                $user_locationTable = M('user_location');
+//                $user_location = $user_locationTable
+//                                ->where(['openid' => $message->FromUserName])
+//                                ->getField('id');
+//
+//                if (!$user_location) {
+//                    $data = [
+//                        'openid' => $message->FromUserName,
+//                        'latitude' => $message->Location_X,
+//                        'longitude' => $message->Location_Y,
+//                        'create_time' => time(),
+//                        'update_time' => time()
+//                    ];
+//                    $user_locationTable->add($data);
+//                } else {
+//                    $data = [
+//                        'id' => $user_location,
+//                        'latitude' => $message->Location_X,
+//                        'longitude' => $message->Location_Y,
+//                        'update_time' => time()
+//                    ];
+//                    $user_locationTable->save($data);
+//                }
+//                return "地理位置更新成功";
+//            } else {
+//                return "您好！欢迎关注我！";
+//            }
+            return "您好！欢迎关注我！";
         });
         $response = $server->serve();
         $response->send();
