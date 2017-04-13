@@ -23,7 +23,7 @@ class CommonController extends Controller
         $server = $app->server;
         $server->setMessageHandler(function ($message) {
             $msg_type = $message->MsgType;
-            if ($$msg_type == 'location') {//  存储用户地理位置
+            if ($msg_type == 'location') {//  存储用户地理位置
                 $user_locationTable = M('user_location');
                 $user_location = $user_locationTable
                                 ->where(['openid' => $message->FromUserName])
@@ -47,7 +47,7 @@ class CommonController extends Controller
                     ];
                     $user_locationTable->save($data);
                 }
-                return "地理为宗旨更新成功";
+                return "地理位置更新成功";
             } else {
                 return "您好！欢迎关注我！";
             }
