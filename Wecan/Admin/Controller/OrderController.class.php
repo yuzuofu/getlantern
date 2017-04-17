@@ -48,7 +48,7 @@ class OrderController extends PublicController
                     $this->error('该优惠券不存在');
                 } elseif(intval($coupon_ticket['enable']) === 1) {  // 优惠券已经使用了
                     $this->error("该优惠券已使用");
-                } elseif ($coupon_ticket['start_time'] > $today || $coupon_ticket['ena_time'] < $today) {
+                } elseif ($coupon_ticket['start_time'] > $today || $coupon_ticket['end_time'] < $today) {
                     //  不在优惠券的使用时间范围之内
                     $this->error("优惠券不在使用时间范围");
                 } else {
