@@ -96,12 +96,17 @@ class OrderController extends PublicController
         $menus = json_decode($menus, true);
         $menuids = array_keys($menus);
         array_walk($menuids, 'intval');
-        $menuids = implode(',', $menuids);
-        $menuTable = M('Menu');
-        $menu_list = $menuTable->where(['id' => ['IN', $menuids]])->select();
-        $this->assign('menu_list', $menu_list);
-        $this->assign('is_order_menu', true);
-        $this->display("Menu/index");
+
+        if ($menuids) {
+            $menuids = implode(',', $menuids);
+            $menuTable = M('Menu');
+            $menu_list = $menuTable->where(['id' => ['IN', $menuids]])->select();
+            $this->assign('menu_list', $menu_list);
+            $this->assign('is_order_menu', true);
+            $this->display("Menu/index");
+        } else {
+            $this->error("用户还未选择点餐");
+        }
     }
 
     public function delete()

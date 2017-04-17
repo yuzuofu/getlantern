@@ -7,7 +7,7 @@
     </ol>
 </block>
 <block name="main">
-    <form action="#">
+    <form action="{:U('Order/edit')}" method="post">
         <div class="form-group row" style="padding: 0 25px;">
             <label for="order-user" class="h4">预约用户:</label>
             <input type="text" class="form-control" id="order-user" value="{$order.username}" readonly />
